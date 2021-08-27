@@ -399,7 +399,7 @@ class ManualLabeling:
         self.window.destroy()
 
 if __name__ == "__main__":
-    pidx = 0
+    pidx = 12
     dir_img = f"/Users/hudanyunsheng/Documents/github/plantcv-labeling-tools/time_series_labeling/sample/data/plant{pidx}/images"
     dir_cure_lb_im = f"/Users/hudanyunsheng/Documents/github/plantcv-labeling-tools/time_series_labeling/sample/data/plant{pidx}/curated_seg_labels"
     pattern_dt = "\d{4}-\d{2}-\d{2}-\d{2}-\d{2}"
@@ -422,7 +422,7 @@ if __name__ == "__main__":
     # if starting from the middle you have to make sure you have the label available for t-1 saved in dir_gt
     # the example below starts from 2019-11-03-09-05
     # if start from the 1st time point, comment the code below
-    ind = tps.index("2019-10-26-12-05")
+    ind = tps.index("2019-11-01-09-05")
     for tp in tps[ind:]:
         print(f"\nSelect timepoint: {tp}")
         manual_labeling.lbl(tp)
