@@ -207,7 +207,7 @@ class ManualDrawPoly:
         self.window.destroy()
 
 if __name__ == "__main__":
-    path_lb_im = "/Users/hudanyunsheng/Desktop/ts_labeling/data/plant5/curated_seg_labels"
+    path_lb_im = "/Users/hudanyunsheng/Documents/github/plantcv-labeling-tools/time_series_labeling/sample/data/plant0/curated_seg_labels"
     path_img = path_lb_im.replace("curated_seg_labels", "images")
     file_lb_im = glob.glob(os.path.join(path_lb_im, "*2019-11-04-19-05_.pkl"))[0]
     file_img = file_lb_im.replace(path_lb_im, path_img).replace(".pkl", ".png")
