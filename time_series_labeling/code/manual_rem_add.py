@@ -197,7 +197,12 @@ class ManualRemRedun:
         self.ax1.set_title(tp_t)
 
         self.ax2 = self.fig.add_subplot(1, 3, 2)
-        self.ax2.imshow(self.lb_im)
+        # self.ax2.imshow(self.lb_im)
+        self.ax2.imshow(self.img)
+        mask_all = copy.deepcopy(self.lb_im)
+        mask_all[np.where(mask_all > 0)] = 1
+        ma_lb_im = np.ma.array(self.lb_im, mask=~mask_all.astype(bool))
+        self.ax2.imshow(ma_lb_im)
         self.ax2.set_title(f"{num_seg} segments\nclick on unwanted segments")
 
         self.ax3 = self.fig.add_subplot(1, 3, 3)
@@ -323,7 +328,7 @@ if __name__ == "__main__":
     pattern_dt = "\d{4}-\d{2}-\d{2}-\d{2}-\d{2}"
 
     # directories of data and segmentation
-    pidx = 0
+    pidx = 12
     dir_img = f"/Users/hudanyunsheng/Documents/github/plantcv-labeling-tools/time_series_labeling/sample/data/plant{pidx}/images"
     dir_sg = f"/Users/hudanyunsheng/Documents/github/plantcv-labeling-tools/time_series_labeling/sample/data/plant{pidx}/segmentation"
 
@@ -354,7 +359,7 @@ if __name__ == "__main__":
     # if starting from the middle you have to make sure you have the label available for t-1 saved in dir_gt
     # the example below starts from 2019-11-03-09-05
     # if start from the 1st time point, discard the code below
-    ind = tps.index("2019-10-26-12-05")
+    ind = tps.index("2019-11-01-09-05")
     for tp in tps[ind:]:
     # for tp in [tps[ind]]:
         print(f"\nNow labeling: {tp}")
